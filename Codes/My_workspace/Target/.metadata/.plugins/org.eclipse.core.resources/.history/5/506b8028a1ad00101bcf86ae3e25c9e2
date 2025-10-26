@@ -1,0 +1,25 @@
+/*
+ * STM32_GPIO.c
+ *
+ *  Created on: Oct 20, 2025
+ *      Author: ANAS
+ */
+
+#include <STM32_GPIO.h>
+
+
+
+void led_init(uint8_t pin)
+{
+	gpiod_ptr->MODER &= ~(0X03<<(pin*2));		/// clearing the mode bits for the LED
+	gpiod_ptr->MODER |= (0x01 << (pin*2));		/// setting the mode bits as output for the LED
+}
+
+
+void toggle_led(uint8_t pin)
+{
+	gpiod_ptr->ODR ^= (1<<pin);					/// toggling the LED
+}
+
+void turn_on_led(uint8_t pin)
+

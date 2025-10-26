@@ -1,0 +1,23 @@
+/*
+ * stm32_GPIO.c
+ *
+ *  Created on: Oct 5, 2025
+ *      Author: ANAS
+ */
+
+/* #############################    INCLUDING HEADER FILES ##########################################*/
+#include "stm32_GPIO.h"
+
+/* #############################    INIT CONSTANTS FOR THE REGISTERS ################################*/
+
+
+const MODE_REG_TYPE MODE_REG_INIT_CONFIG = {.bits = {.MODER0 = 01}};
+
+
+/* #############################    FILLING THE INITIAL CONFIGURATIONS MEMMAP FOR GPIOA (SW)  #######*/
+
+
+void init_config_gpio_port_a(void)
+{
+	GPIOA_init_config.MODER = MODE_REG_INIT_CONFIG.all;
+}

@@ -1,0 +1,22 @@
+/*
+ * stm32_basic_timer.c
+ *
+ *  Created on: Oct 4, 2025
+ *      Author: ANAS
+ */
+
+#include "stm32_basic_timer.h"
+#include "stdint.h"
+
+
+
+/// Copying all the initial configuations to registers
+void tim6_init(BASIC_TIM* cfg)
+{
+	TIM6->CR1.all = cfg->CR1.all;
+	TIM6->CR2.all = cfg->CR2.all;
+	TIM6->DIER.all = cfg->DIER.all;
+	TIM6->PSC.all = cfg->PSC.all;
+	TIM6->ARR.all = cfg->ARR.all;
+
+}

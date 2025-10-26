@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;07_basic&apos; to &apos;07_basic_timer_with_project_format&apos;" description="Rename resource &apos;07_basic&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/07_basic" name="07_basic_timer_with_project_format" stamp="1759685524852" updateReferences="true"/>
+</session>

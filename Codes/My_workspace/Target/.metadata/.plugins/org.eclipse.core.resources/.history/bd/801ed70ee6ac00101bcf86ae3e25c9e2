@@ -1,0 +1,23 @@
+/*
+ * STM32_GPT.h
+ *
+ *  Created on: Oct 19, 2025
+ *      Author: ANAS
+ */
+
+#ifndef INC_STM32_GPT_H_
+#define INC_STM32_GPT_H_
+
+
+#include <stdint.h>
+
+typedef struct
+{
+	volatile uint32 TIMx_CR1;
+	volatile uint32 TIMx_CR2;
+	volatile uint32 TIMx_SMCR;
+}gpt_strucutre;
+
+
+
+#endif /* INC_STM32_GPT_H_ */

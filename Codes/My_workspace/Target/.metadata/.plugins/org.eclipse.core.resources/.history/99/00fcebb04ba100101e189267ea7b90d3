@@ -1,0 +1,54 @@
+/*
+ * stm32_basic_timer.c
+ *
+ *  Created on: Oct 4, 2025
+ *      Author: ANAS
+ */
+
+#include "stm32_basic_timer.h"
+#include "stdint.h"
+
+/// Initial configuations for timer 6
+const CR1_bits CR1_init_config = 		{ .bits = {.CEN = SET_BIT, .ARPE = SET_BIT, .OPM = CLEAR_BIT}};
+const CR2_bits CR2_init_config = 		{ .bits = {.MMS = CLEAR_BIT}};
+const DIER_bits DIER_init_config = 		{ .bits = {.UIE = SET_BIT}};
+const PSC_bits PSC_init_config=			{ .bits = {.prescalar = 0x3E7F}};
+const ARR_bits ARR_init_config = 		{ .bits = {.reload_reg = 0x3E7}};
+
+
+/// Array containing all initial configurations
+
+TIM6_INIT_CFG = {
+		.CR1 = CR1_init_config,
+		.CR2 = CR2_init_config,
+		.DIER = DIER_init_config,
+		.PSC = PSC_init_config,
+		.ARR = ARR_init_config
+};
+
+
+BASIC_TIM TIM6_INIT_CFG = {
+		CR1_init_config,
+		CR2_init_config,
+		NO_INIT,
+		DIER_init_config,
+		{NO_INIT},
+		{NO_INIT},
+		NO_INIT, NO_INIT, NO_INIT,
+		{NO_INIT},
+		PSC_init_config,
+		ARR_init_config
+};
+
+
+/// Copying all the initial configuations to registers
+void tim6_init(BASIC_TIM* cfg)
+{
+	TIM6->PSC.all = cfg->PSC.all;
+	TIM6->ARR.all = cfg->ARR.all;
+	TIM6->DIER.all = cfg->DIER.all;
+	TIM6->CR2.all = cfg->CR2.all;
+	TIM6->EGR.bits.UG = 1;
+	TIM6->CR1.all = cfg->CR1.all;
+
+}

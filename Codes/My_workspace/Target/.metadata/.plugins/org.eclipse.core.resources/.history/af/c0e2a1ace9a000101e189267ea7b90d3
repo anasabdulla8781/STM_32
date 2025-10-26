@@ -1,0 +1,20 @@
+/*
+ * stm32_basic_timer.c
+ *
+ *  Created on: Oct 4, 2025
+ *      Author: ANAS
+ */
+
+#include "stm32_basic_timer.h"
+
+
+CR1_bits CR1_init_config = {	.CEN 	= 1,
+						.ARPE 	= 1,
+						.OPM	= 0};
+
+
+
+void init_config_tim6(CR1_bits* cfg)
+{
+	TIM6->CR1 = *cfg;
+}

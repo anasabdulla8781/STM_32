@@ -1,0 +1,25 @@
+/*
+ * stm32_GPIO.c
+ *
+ *  Created on: Oct 5, 2025
+ *      Author: ANAS
+ */
+
+/* #############################    INCLUDING HEADER FILES ##########################################*/
+#include <stm32_gpio.h>
+
+/* #############################    INIT CONSTANTS FOR THE REGISTERS ################################*/
+
+
+const MODE_REG_TYPE init_config_mode_reg_portd = {.bits = {.MODER15 = 1 , .MODER12 = 1, .MODER13 = 1, .MODER14 = 1}};		/// setting the MODE_REG 12, 13, 14, 15 to output for the LED
+const MODE_REG_TYPE init_config_mode_reg_porta = {.bits = {.MODER0 = 0 , .MODER13 = 2, .MODER14 = 2, .MODER15 = 2}};														/// setting the MODE_REG_0 to input for the user butten
+
+
+/* ################    FILLING THE INITIAL CONFIGURATIONS MEMMAP FOR GPIOA (HW)  ###################*/
+
+
+void init_config_gpio(void)
+{
+	GPIOA->MODER = init_config_mode_reg_porta.all;
+	GPIOD->MODER = init_config_mode_reg_portd.all;
+}

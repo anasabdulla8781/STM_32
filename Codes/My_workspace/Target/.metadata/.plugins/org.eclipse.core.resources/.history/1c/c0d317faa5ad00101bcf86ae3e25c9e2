@@ -1,0 +1,17 @@
+/*
+ * STM32_GPT.c
+ *
+ *  Created on: Oct 19, 2025
+ *      Author: ANAS
+ */
+
+
+#include <STM32_GPT.h>
+#include <stdint.h>
+
+
+void timer2_init(uint32_t clock_frequency , uint32_t auto_reload)
+{
+	gpt2_ptr->TIMx_PSC = clock_frequency - 1;
+	gpt2_ptr->TIMx_ARR = auto_reload - 1;
+}

@@ -1,0 +1,176 @@
+/*
+ * stm32_basic_timer.h
+ *
+ *  Created on: Oct 4, 2025
+ *      Author: ANAS
+ */
+
+#ifndef STM32_BASIC_TIM_H_
+#define STM32_BASIC_TIM_H_
+
+
+#include "stdint.h"
+#include "main.h"
+
+/***********************
+ * Control register 1
+ ***********************/
+
+typedef union
+{
+	struct
+	{
+		volatile uint32_t CEN		:1;
+		volatile uint32_t UDIS		:1;
+		volatile uint32_t URS		:1;
+		volatile uint32_t OPM		:1;
+		volatile uint32_t RESERVED0	:3;
+		volatile uint32_t ARPE		:1;
+		volatile uint32_t RESERVED1	:24;
+
+	}bits;
+	volatile uint32_t all;
+
+}CR1_bits;
+
+/***********************
+ * Control register 2
+ ***********************/
+
+typedef union
+{
+	struct
+	{
+		volatile uint32_t RESERVED	:4;
+		volatile uint32_t MMS		:3;
+		volatile uint32_t RESERVED2	:25;
+	}bits;
+	volatile uint32_t all;
+}CR2_bits;
+
+/***********************
+ * DMA/INTERRUPT Enable register
+ ***********************/
+
+typedef union
+{
+	struct
+	{
+		volatile uint32_t UIE		:1;
+		volatile uint32_t reserved0	:7;
+		volatile uint32_t UDE		:1;
+		volatile uint32_t reserved1	:23;
+	}bits;
+	volatile uint32_t all;
+}DIER_bits;
+
+
+/***********************
+ * Status register
+ ***********************/
+
+typedef union
+{
+	struct
+	{
+		volatile uint32_t UIF		:1;
+		volatile uint32_t Reserved	:31;
+	}bits;
+	volatile uint32_t all;
+}SR_bits;
+
+/***********************
+ * Event generation register
+ ***********************/
+typedef union
+{
+	struct
+	{
+		volatile uint32_t UG		:1;
+		volatile uint32_t Reserved	:31;
+	}bits;
+	volatile uint32_t all;
+}EGR_bits;
+
+/***********************
+ * counter register
+ ***********************/
+
+typedef union
+{
+	struct
+	{
+		volatile uint32_t Counter	:16;
+		volatile uint32_t Reserved	:16;
+	}bits;
+	volatile uint32_t all;
+}CNT_bits;
+
+/***********************
+ * prescalar register
+ ***********************/
+
+typedef union
+{
+	struct
+	{
+		volatile uint32_t prescalar	:16;
+		volatile uint32_t Reserved	:16;
+	}bits;
+	volatile uint32_t all;
+}PSC_bits;
+
+/***********************
+ * auto reload register
+ ***********************/
+
+typedef union
+{
+	struct
+	{
+		volatile uint32_t reload_reg	:16;
+		volatile uint32_t Reserved		:16;
+	}bits;
+	volatile uint32_t all;
+}ARR_bits;
+
+
+/***********************
+ * Basic timer (TIM) ( basic timer register )
+ ***********************/
+typedef struct
+{
+	volatile uint32_t CR1;   		// Control Register 1
+	volatile CR2_bits CR2;   		// Control Register 2
+	volatile uint32_t RESERVED0; 	// Reserved, aligns to next register
+	volatile DIER_bits DIER; 		// DMA/Interrupt Enable Register
+	volatile SR_bits  SR;    		// Status Register
+	volatile EGR_bits EGR;   		// Event Generation Register (can use uint32_t for now)
+	volatile uint32_t RESERVED1[3]; // Reserved, aligns to next register
+	volatile CNT_bits CNT;   		// Counter
+	volatile PSC_bits PSC;   		// Prescaler
+	volatile ARR_bits ARR;   		// Auto-reload register
+	// Other registers like RCR, CCRx not used in TIM6/TIM7
+} BASIC_TIM;
+
+
+#define TIM6_BASEADDRESS	0x40001000
+#define TIM7_BASEADDRESS	0x40001400
+
+
+#define TIM6	((BASIC_TIM*)TIM6_BASEADDRESS)
+#define TIM7	((BASIC_TIM*)TIM7_BASEADDRESS)
+
+
+
+/// Global variable declarations
+extern BASIC_TIM TIM6_INIT_CFG;				/// Initial configurations for timer 6, declaration
+
+/// funcion declarations
+extern void tim6_init(BASIC_TIM* cfg);		/// initialization of the timer 6
+
+
+
+
+
+#endif /* STM32_BASIC_TIM_H_ */

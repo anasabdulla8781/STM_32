@@ -1,0 +1,24 @@
+/*
+ * stm32_basic_timer.c
+ *
+ *  Created on: Oct 4, 2025
+ *      Author: ANAS
+ */
+
+#include "stm32_basic_timer.h"
+
+/// Initial configuations for timer 6
+CR1_bits CR1_init_config = 		{ .bits = {.CEN = SET_BIT, .ARPE = SET_BIT, .OPM = CLEAR_BIT}};
+CR2_bits CR2_init_config = 		{ .bits = {.MMS = CLEAR_BIT}};
+DIER_bits DIER_init_config = 	{ .bits = {.UIE = SET_BIT}};
+PSC_bits PSC_init_config=		{.bits =  {.prescalar = 15999}};
+
+/// Array containing all initial configurations
+BASIC_TIM TIM6_INIT_CFG = {CR1_init_config , CR2_init_config , NO_INIT , DIER_init_config, NO_INIT, NO_INIT , NO_INIT, NO_INIT, NO_INIT, NO_INIT , };
+
+/// Copying all the initial configuations to registers
+void init_config_tim6(BASIC_TIM* cfg)
+{
+	TIM6->CR1.all = cfg->CR1.all;
+	TIM6->CR2.all = cfg->CR2.all;
+}

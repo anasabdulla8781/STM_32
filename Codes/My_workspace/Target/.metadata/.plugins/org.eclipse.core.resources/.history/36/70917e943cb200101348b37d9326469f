@@ -1,0 +1,18 @@
+/*
+ * STM32_GPT.c
+ *
+ *  Created on: Oct 19, 2025
+ *      Author: ANAS
+ */
+
+
+#include <STM32_GPT.h>
+#include <stdint.h>
+
+
+void timer2_init(uint32_t clock_frequency)
+{
+	gpt2_ptr->TIMx_PSC = clock_frequency - 1;						/// setting the timer clock frequecy to 1 KHz
+	gpt2_ptr->TIMx_CR1 |= TIMER_ON;									/// Turning on the timer
+}
+

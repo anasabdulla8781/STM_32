@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="true"/>
+	<list key="searchhistory">
+		<item value="uint32_t_t"/>
+		<item value="uint32"/>
+		<item value="NMI_Handler"/>
+	</list>
+	<list key="replacehistory">
+		<item value="uint32_t"/>
+	</list>
+</section>

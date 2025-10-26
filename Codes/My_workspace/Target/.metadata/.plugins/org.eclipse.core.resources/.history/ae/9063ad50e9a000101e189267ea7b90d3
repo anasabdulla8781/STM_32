@@ -1,0 +1,49 @@
+/*
+ * stm32_basic_timer.h
+ *
+ *  Created on: Oct 4, 2025
+ *      Author: ANAS
+ */
+
+#ifndef STM32_BASIC_TIMER_H_
+#define STM32_BASIC_TIMER_H_
+
+
+/***********************
+ * Control register 1
+ ***********************/
+
+typedef struct
+{
+	volatile uint32_t CEN		:1;
+	volatile uint32_t UDIS		:1;
+	volatile uint32_t URS		:1;
+	volatile uint32_t OPM		:1;
+	volatile uint32_t RESERVED0	:3;
+	volatile uint32_t ARPE		:1;
+	volatile uint32_t RESERVED1	:24;
+}CR1_bits;
+
+
+/***********************
+ * Basic timer (TIM) ( basic timer register )
+ ***********************/
+typedef struct
+{
+	volatile CR1_bits CR1;		/// Control regitster 1
+	/// will add later
+}BASIC_TIM;
+
+
+
+
+#define TIM6_BASEADDRESS	0x40001000
+#define TIM7_BASEADDRESS	0x40001400
+
+
+#define TIM6	((BASIC_TIM*)TIM6_BASEADDRESS)
+#define TIM7	((BASIC_TIM*)TIM7_BASEADDRESS)
+
+
+
+#endif /* STM32_BASIC_TIMER_H_ */

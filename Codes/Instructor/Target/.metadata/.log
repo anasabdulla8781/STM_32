@@ -1,0 +1,63 @@
+!SESSION 2025-09-07 15:07:41.937 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data D:\Anas_Embedded system\STM32\Codes\Instructor\Target
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-09-07 15:07:52.062
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-09-07 15:07:52.064
+!MESSAGE Log4j2 initialized with config file D:\Anas_Embedded system\STM32\Codes\Instructor\Target\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-09-07 15:07:56.212
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:36.218
+!MESSAGE Indexed '001HelloWorld' (3 sources, 0 headers) in 0.428 sec: 71 declarations; 49 references; 11 unresolved inclusions; 0 syntax errors; 29 unresolved names (19%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:38.214
+!MESSAGE Indexed '008button_ISR' (3 sources, 0 headers) in 0.048 sec: 87 declarations; 65 references; 12 unresolved inclusions; 0 syntax errors; 46 unresolved names (23%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:38.247
+!MESSAGE Indexed '009packed_Vsnonpacked' (3 sources, 0 headers) in 0.03 sec: 77 declarations; 69 references; 11 unresolved inclusions; 0 syntax errors; 29 unresolved names (17%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:38.770
+!MESSAGE Indexed '003Add' (3 sources, 54 headers) in 0.521 sec: 2,097 declarations; 2,986 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.039%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:39.412
+!MESSAGE Indexed '004led_on' (3 sources, 0 headers) in 0.021 sec: 72 declarations; 47 references; 11 unresolved inclusions; 0 syntax errors; 30 unresolved names (20%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:39.436
+!MESSAGE Indexed '006pin_read' (3 sources, 0 headers) in 0.022 sec: 75 declarations; 52 references; 11 unresolved inclusions; 0 syntax errors; 36 unresolved names (22%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:39.463
+!MESSAGE Indexed '011keypad' (3 sources, 0 headers) in 0.025 sec: 79 declarations; 112 references; 12 unresolved inclusions; 0 syntax errors; 40 unresolved names (17%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:41.144
+!MESSAGE Indexed '002Sizeof' (3 sources, 55 headers) in 0.404 sec: 2,102 declarations; 2,996 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.039%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:41.176
+!MESSAGE Indexed '010led_toggle_bitfields' (3 sources, 1 headers) in 0.03 sec: 138 declarations; 62 references; 11 unresolved inclusions; 0 syntax errors; 84 unresolved names (30%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:41.195
+!MESSAGE Indexed '007volatile' (3 sources, 0 headers) in 0.017 sec: 71 declarations; 48 references; 11 unresolved inclusions; 0 syntax errors; 26 unresolved names (18%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-07 15:08:41.606
+!MESSAGE Indexed '005led_toggle' (3 sources, 53 headers) in 0.409 sec: 1,961 declarations; 2,858 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.041%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-09-07 15:22:35.781
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-09-07 15:24:19.026
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-09-07 15:25:24.641
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-09-07 15:31:00.794
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8
+
+!ENTRY com.st.stm32cube.ide.mcu.debug.swv 1 1 2025-09-07 16:53:55.901
+!MESSAGE SWV configuration; base: 36000000; minDiv: 18; maxDiv: 65535; maxSWO: 2000000; limit: 2000000 => SWO: 2000000; CPU: 16000000; div: 8

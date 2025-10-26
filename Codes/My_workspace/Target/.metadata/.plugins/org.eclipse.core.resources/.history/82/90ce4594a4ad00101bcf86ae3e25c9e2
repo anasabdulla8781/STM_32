@@ -1,0 +1,16 @@
+/*
+ * STM32_GPT.c
+ *
+ *  Created on: Oct 19, 2025
+ *      Author: ANAS
+ */
+
+
+#include <STM32_GPT.h>
+#include <stdint.h>
+
+
+void timer2_init(uint8_t time)
+{
+
+}

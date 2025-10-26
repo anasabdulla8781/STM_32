@@ -1,0 +1,13 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:01_LED_Blinking,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:02_Toggling LED,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:02_Toggling LED_with_user_button,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:03_LED_with_USER_Butten,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:04_interrupts_basic,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:05_interrupts_through_button,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:06_Basic_timer,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:07_basic_timer_with_project_format,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:08_LED_GPT_in_project_form
+eclipse.preferences.version=1
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:01_LED_Blinking/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:01_LED_Blinking/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:02_Toggling\ LED_with_user_button/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:03_LED_with_USER_Butten/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:04_interrupts_basic/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:05_interrupts_through_button/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:06_Basic_timer/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:07_basic_timer_with_project_format/activeLaunchMode=run

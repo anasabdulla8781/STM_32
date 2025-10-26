@@ -1,0 +1,16 @@
+/*
+ * STM32_RCC.c
+ *
+ *  Created on: Oct 20, 2025
+ *      Author: ANAS
+ */
+
+
+#include <STM32_RCC.h>
+
+
+void rcc_init (void)
+{
+
+}
+

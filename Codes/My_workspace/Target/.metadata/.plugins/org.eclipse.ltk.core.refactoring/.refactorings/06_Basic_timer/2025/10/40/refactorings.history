@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;06_Basic_timer/Inc/mail.h&apos; to &apos;main.h&apos;" description="Rename resource &apos;mail.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Inc/mail.h" name="main.h" stamp="1759593834103" updateReferences="true"/>
+</session>

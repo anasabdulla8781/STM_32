@@ -1,0 +1,21 @@
+12:44:56 **** Incremental Build of configuration Debug for project 08_LED_GPT_in_project_form ****
+make -j12 all 
+arm-none-eabi-gcc "../Services/src/STM32_GPT.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I../Inc -I"D:/Anas_Embedded system/STM32/Codes/My_workspace/Target/08_LED_GPT_in_project_form/Services/inc" -I"D:/Anas_Embedded system/STM32/Codes/My_workspace/Target/08_LED_GPT_in_project_form/App/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Services/src/STM32_GPT.d" -MT"Services/src/STM32_GPT.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Services/src/STM32_GPT.o"
+arm-none-eabi-gcc "../App/src/app_main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I../Inc -I"D:/Anas_Embedded system/STM32/Codes/My_workspace/Target/08_LED_GPT_in_project_form/Services/inc" -I"D:/Anas_Embedded system/STM32/Codes/My_workspace/Target/08_LED_GPT_in_project_form/App/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"App/src/app_main.d" -MT"App/src/app_main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "App/src/app_main.o"
+../App/src/app_main.c:26:4: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   26 |   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |    ^~~~~~~
+arm-none-eabi-gcc -o "08_LED_GPT_in_project_form.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Anas_Embedded system\STM32\Codes\My_workspace\Target\08_LED_GPT_in_project_form\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="08_LED_GPT_in_project_form.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 08_LED_GPT_in_project_form.elf
+ 
+arm-none-eabi-size  08_LED_GPT_in_project_form.elf 
+arm-none-eabi-objdump -h -S 08_LED_GPT_in_project_form.elf  > "08_LED_GPT_in_project_form.list"
+   text	   data	    bss	    dec	    hex	filename
+   1112	      0	   1568	   2680	    a78	08_LED_GPT_in_project_form.elf
+Finished building: default.size.stdout
+ 
+Finished building: 08_LED_GPT_in_project_form.list
+ 
+
+12:44:59 Build Finished. 0 errors, 1 warnings. (took 3s.211ms)
+

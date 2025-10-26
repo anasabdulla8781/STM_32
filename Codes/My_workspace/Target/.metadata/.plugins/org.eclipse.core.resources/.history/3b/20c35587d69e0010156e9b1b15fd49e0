@@ -1,0 +1,72 @@
+/*
+ * main.h
+ *
+ *  Created on: Oct 1, 2025
+ *      Author: ANAS
+ */
+
+#ifndef MAIN_H_
+#define MAIN_H_
+
+
+/*  REGISTER STRUCTURES
+	1. RCC
+	2. GPIO
+	3. EXTI
+*/
+
+typedef struct
+{
+	volatile uint32_t config_reg;
+	volatile uint32_t pll_config_reg;
+	volatile uint32_t rcc_config_reg;
+	volatile uint32_t rcc_ci_register;
+	volatile uint32_t ahb1_reset_register;
+	volatile uint32_t ahb2_reset_register;
+	volatile uint32_t ahb3_reset_register;
+	volatile uint32_t reserved1;
+	volatile uint32_t apb1_reset_register;
+	volatile uint32_t apb2_reset_register;
+	volatile uint32_t reserved2;
+	volatile uint32_t reserved3;
+	volatile uint32_t ahb1_enable_register;
+	volatile uint32_t ahb2_enable_register;
+	volatile uint32_t ahb3_enable_register;
+	volatile uint32_t reserved4;
+	volatile uint32_t apb1_enable_register;
+	volatile uint32_t apb2_enable_register;
+}RCC;
+
+typedef struct
+{
+	volatile uint32_t mode_reg;
+	volatile uint32_t output_type_reg;
+	volatile uint32_t output_speed_reg;
+	volatile uint32_t pullup_pulldown_reg;
+	volatile uint32_t input_data_reg;
+	volatile uint32_t output_data_reg;
+}GPIO;
+
+typedef struct
+{
+	volatile uint32_t EXTI_interrupt_mask_register;
+	volatile uint32_t EXTI_event_mask_register;
+	volatile uint32_t EXTI_RTSR;
+	volatile uint32_t EXTI_FTSR;
+	volatile uint32_t EXTI_SWIER;
+	volatile uint32_t EXTI_PR;
+}EXTI;
+
+ /// BASE ADDRESSES
+#define	GPIOA_BASEADDRESS	0x40020000
+#define	GPIOD_BASEADDRESS	0x40020C00
+#define RCC_BASEADDRESS		0x40023800
+#define EXTI_BASEADDRESS	0x40013C00
+
+/// POINTER TO THE STRUCTURES
+#define RCC		((RCC*)RCC_BASEADDRESS)
+#define GPIOA	((GPIO*)GPIOA_BASEADDRESS)
+#define GPIOD	((GPIO*)GPIOD_BASEADDRESS)
+#define EXTI	((EXTI*)EXTI_BASEADDRESS)
+
+#endif /* MAIN_H_ */

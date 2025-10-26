@@ -1,0 +1,150 @@
+/*
+ * main.h
+ *
+ *  Created on: Oct 1, 2025
+ *      Author: ANAS
+ */
+
+#ifndef MAIN_H_
+#define MAIN_H_
+
+
+/*  REGISTER STRUCTURES
+	1. RCC
+	2. GPIO
+	3. EXTI
+*/
+
+/***********************
+ * Reset and Clock Control (RCC)
+ ***********************/
+typedef struct
+{
+    volatile uint32_t CR;            // Clock control register
+    volatile uint32_t PLLCFGR;       // PLL configuration register
+    volatile uint32_t CFGR;          // Clock configuration register
+    volatile uint32_t CIR;           // Clock interrupt register
+    volatile uint32_t AHB1RSTR;      // AHB1 peripheral reset register
+    volatile uint32_t AHB2RSTR;      // AHB2 peripheral reset register
+    volatile uint32_t AHB3RSTR;      // AHB3 peripheral reset register
+    volatile uint32_t RESERVED0;     // Reserved
+    volatile uint32_t APB1RSTR;      // APB1 peripheral reset register
+    volatile uint32_t APB2RSTR;      // APB2 peripheral reset register
+    volatile uint32_t RESERVED1;     // Reserved
+    volatile uint32_t RESERVED2;     // Reserved
+    volatile uint32_t AHB1ENR;       // AHB1 peripheral clock enable register
+    volatile uint32_t AHB2ENR;       // AHB2 peripheral clock enable register
+    volatile uint32_t AHB3ENR;       // AHB3 peripheral clock enable register
+    volatile uint32_t RESERVED3;     // Reserved
+    volatile uint32_t APB1ENR;       // APB1 peripheral clock enable register
+    volatile uint32_t APB2ENR;       // APB2 peripheral clock enable register
+} RCC;
+
+
+/***********************
+ * General Purpose I/O (GPIO)
+ ***********************/
+typedef struct
+{
+    volatile uint32_t MODER;         // Mode register (input, output, alternate, analog)
+    volatile uint32_t OTYPER;        // Output type register (push-pull / open-drain)
+    volatile uint32_t OSPEEDR;       // Output speed register (low, medium, high, very high)
+    volatile uint32_t PUPDR;         // Pull-up / pull-down register
+    volatile uint32_t IDR;           // Input data register (read pin state)
+    volatile uint32_t ODR;           // Output data register (write pin state)
+} GPIO;
+
+
+/***********************
+ * External Interrupt/Event Controller (EXTI)
+ ***********************/
+typedef struct
+{
+    volatile uint32_t IMR;           // Interrupt mask register
+    volatile uint32_t EMR;           // Event mask register
+    volatile uint32_t RTSR;          // Rising trigger selection register
+    volatile uint32_t FTSR;          // Falling trigger selection register
+    volatile uint32_t SWIER;         // Software interrupt event register
+    volatile uint32_t PR;            // Pending register (shows & clears pending interrupts)
+} EXTI;
+
+
+/***********************
+ * System Configuration Controller (SYSCFG)
+ ***********************/
+typedef struct
+{
+    volatile uint32_t MEMRMP;        // Memory remap register
+    volatile uint32_t PMC;           // Peripheral mode configuration register
+    volatile uint32_t EXTICR1;       // External interrupt configuration register 1 (lines 0–3)
+    volatile uint32_t EXTICR2;       // External interrupt configuration register 2 (lines 4–7)
+    volatile uint32_t EXTICR3;       // External interrupt configuration register 3 (lines 8–11)
+    volatile uint32_t EXTICR4;       // External interrupt configuration register 4 (lines 12–15)
+    volatile uint32_t CMPCR;         // Compensation cell control register
+} SYSCFG;
+
+/***********************
+ * Nested Vectored Interrupt Controller (NVIC)
+ ***********************/
+typedef struct
+{
+    volatile uint32_t ISER[8];    // Interrupt Set-Enable Registers (enable interrupts)
+    volatile uint32_t ICER[8];    // Interrupt Clear-Enable Registers (disable interrupts)
+    volatile uint32_t ISPR[8];    // Interrupt Set-Pending Registers (set interrupt pending)
+    volatile uint32_t ICPR[8];    // Interrupt Clear-Pending Registers (clear pending)
+    volatile uint32_t IABR[8];    // Interrupt Active Bit Registers (read-only, shows active interrupts)
+    volatile uint8_t  IPR[240];   // Interrupt Priority Registers (8-bit per interrupt, priority levels)
+    volatile uint32_t STIR;       // Software Trigger Interrupt Register (trigger interrupt by software)
+} NVIC;
+
+/***********************
+ * Basic timer (NVIC)
+ ***********************/
+typedef struct
+{
+	volatile uint32_t CR1;		/// Control regitster 1
+}BASIC_TIM;
+
+
+ /// BASE ADDRESSES
+#define	GPIOA_BASEADDRESS	0x40020000
+#define	GPIOD_BASEADDRESS	0x40020C00
+#define RCC_BASEADDRESS		0x40023800
+#define EXTI_BASEADDRESS	0x40013C00
+#define SYSCFG_BASEADDRESS	0x40013800
+#define NVIC_BASEADDRESS	0xE000E100
+#define TIM6_BASEADDRESS	0x40001000
+#define TIM7_BASEADDRESS	0x40001400
+
+
+
+/// POINTER TO THE STRUCTURES
+#define RCC		((RCC*)RCC_BASEADDRESS)
+#define GPIOA	((GPIO*)GPIOA_BASEADDRESS)
+#define GPIOD	((GPIO*)GPIOD_BASEADDRESS)
+#define EXTI	((EXTI*)EXTI_BASEADDRESS)
+#define SYSCFG	((SYSCFG*)SYSCFG_BASEADDRESS)
+#define NVIC	((NVIC*)NVIC_BASEADDRESS)
+#define TIM6	((BASIC_TIM*)TIM6_BASEADDRESS)
+#define TIM7	((BASIC_TIM*)TIM7_BASEADDRESS)
+
+
+
+#define SET_GPIOAEN					0x01
+#define SET_GPIODEN					0x08
+#define SET_SYSCFGEN				0x4000
+#define SET_EXTI0_PA0				0x00
+#define CLEAR_EXTI0					0xFFF0
+#define CLEAR_MODER0				0xFFFFFFFC
+#define SET_MODER0_INPUT			0X00
+#define CLEAR_MODER12				0xFCFFFFFF
+#define SET_MODER12_OUTPUT			0x1000000
+#define CLEAR_EXTI0_IMR				(uint32_t) (~(0x01 << 0))
+#define SET_EXTI0_IMR				(0x01 << 0)
+#define CLEAR_EXTI0_FTSR			(uint32_t) (~(0x01 << 0))
+#define SET_EXTI0_FTSR				(0x01 << 0)
+#define SET_EXT0_INTERRUPT_ENABLE	(1 << 6)
+
+
+
+#endif /* MAIN_H_ */

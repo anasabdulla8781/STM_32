@@ -1,0 +1,10 @@
+00:09:04 **** Incremental Build of configuration Debug for project 07_basic_timer_with_project_format ****
+make -j12 all 
+arm-none-eabi-size  07_basic_timer_with_project_format.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1260	     48	   1568	   2876	    b3c	07_basic_timer_with_project_format.elf
+Finished building: default.size.stdout
+ 
+
+00:09:04 Build Finished. 0 errors, 0 warnings. (took 325ms)
+
