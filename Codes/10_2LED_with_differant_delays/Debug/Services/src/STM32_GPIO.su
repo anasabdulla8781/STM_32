@@ -1,2 +1,2 @@
 ../Services/src/STM32_GPIO.c:12:6:led_init	16	static
-../Services/src/STM32_GPIO.c:19:6:led_operations	16	static
+../Services/src/STM32_GPIO.c:32:6:led_operations	16	static

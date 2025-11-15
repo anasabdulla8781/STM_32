@@ -61,8 +61,8 @@ all: main-build
 main-build: 10_2LED_with_differant_delays.elf secondary-outputs
 
 # Tool invocations
-10_2LED_with_differant_delays.elf 10_2LED_with_differant_delays.map: $(OBJS) $(USER_OBJS) D:\Anas_Embedded\ system\STM32\Codes\My_workspace\Target\10_2LED_with_differant_delays\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "10_2LED_with_differant_delays.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Anas_Embedded system\STM32\Codes\My_workspace\Target\10_2LED_with_differant_delays\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_2LED_with_differant_delays.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+10_2LED_with_differant_delays.elf 10_2LED_with_differant_delays.map: $(OBJS) $(USER_OBJS) D:\Anas_Embedded\ system\STM32_Activities\Codes\10_2LED_with_differant_delays\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "10_2LED_with_differant_delays.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Anas_Embedded system\STM32_Activities\Codes\10_2LED_with_differant_delays\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_2LED_with_differant_delays.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
