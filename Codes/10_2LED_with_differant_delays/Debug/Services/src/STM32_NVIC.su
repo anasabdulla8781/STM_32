@@ -1,0 +1,2 @@
+../Services/src/STM32_NVIC.c:19:6:nvic_init	16	static
+../Services/src/STM32_NVIC.c:33:6:TIM2_IRQHandler	8	static
