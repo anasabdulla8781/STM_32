@@ -64,9 +64,13 @@ typedef struct
 #define OFF		0
 #define TOGGLE	2
 
+#define PIN_OUTPUT 	1
+#define PIN_INPUT	2
+#define PIN_ALTERNATE_FUNCTION	3
+
 
 /// FUNCTION DEFINITIONS
-extern void led_init(uint8_t pin);
+extern void led_init(uint8_t pin,uint8_t mode);
 extern void led_operations(uint8_t pin , uint8_t state);
 
 
