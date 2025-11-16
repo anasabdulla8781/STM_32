@@ -1,0 +1,69 @@
+
+/*
+ * STM32_GPT.c
+ *
+ *  Created on: Oct 19, 2025
+ *      Author: ANAS
+ */
+
+
+#include <STM32_GPT.h>
+#include <stdint.h>
+
+
+void timer2_init(void)
+{
+	gpt2_ptr->TIMx_CR1 |= ENABLE_ARR_BUFFER;						/// Enabling ARR buffering ( will not update all of a sudden )
+	gpt2_ptr->TIMx_DIER |= ENABLE_UPDATE_INTERRUPT;					/// Enabling the update interrupt
+}
+
+void timer2_set(uint32_t arr , uint32_t psc)
+{
+	gpt2_ptr->TIMx_ARR = arr;										/// Setting auto reload register value
+	gpt2_ptr->TIMx_PSC = psc;										/// Setting prescalar value
+	gpt2_ptr->TIMx_EGR |= 1;          								/// <<< Generate update event (IMPORTANT)
+	gpt2_ptr->TIMx_CR1 |= TIMER_ON;									/// Turning on the timer (counter enabled)
+}
+
+void timer4_init(void)
+{
+	gpt4_ptr->TIMx_CR1 |= ENABLE_ARR_BUFFER;						/// Enabling ARR buffering ( will not update all of a sudden )
+	gpt4_ptr->TIMx_DIER |= ENABLE_UPDATE_INTERRUPT;					/// Enabling the update interrupt
+}
+
+void timer4_set(uint32_t arr , uint32_t psc)
+{
+	gpt4_ptr->TIMx_ARR = arr;										/// Setting auto reload register value
+	gpt4_ptr->TIMx_PSC = psc;										/// Setting prescalar value
+	gpt4_ptr->TIMx_EGR |= 1;          								/// <<< Generate update event (IMPORTANT)
+	gpt4_ptr->TIMx_CR1 |= TIMER_ON;									/// Turning on the timer (counter enabled)
+}
+
+void timer4_set_pwm(uint8_t channel)
+{
+	if(channel == 1)
+	{
+		gpt4_ptr->TIMx_CCMR1 &= ~ (0x03 << 0);					/// setting the PWM mode in the Capture compare select bits
+		gpt4_ptr->TIMx_CCMR1 &= ~ (0x0c << 0);					/// clearing the bits for fast enable and buffering from other register
+		gpt4_ptr->TIMx_CCMR1 |=   (0x08 << 0);					/// setting the buffering
+	}
+	else if (channel == 2)
+	{
+		gpt4_ptr->TIMx_CCMR1 &= ~ (0x03 << 8);					/// setting the PWM mode in the Capture compare select bits
+		gpt4_ptr->TIMx_CCMR1 &= ~ (0x0c << 8);					/// clearing the bits for fast enable and buffering from other register
+		gpt4_ptr->TIMx_CCMR1 |=   (0x08 << 8);					/// setting the buffering
+	}
+	else if (channel == 3)
+	{
+		gpt4_ptr->TIMx_CCMR2 &= ~ (0x03 << 0);					/// setting the PWM mode in the Capture compare select bits
+		gpt4_ptr->TIMx_CCMR2 &= ~ (0x0c << 0);					/// clearing the bits for fast enable and buffering from other register
+		gpt4_ptr->TIMx_CCMR2 |=   (0x08 << 0);					/// setting the buffering
+	}
+	else if (channel == 4)
+	{
+		gpt4_ptr->TIMx_CCMR2 &= ~ (0x03 << 8);					/// setting the PWM mode in the Capture compare select bits
+		gpt4_ptr->TIMx_CCMR2 &= ~ (0x0c << 0);					/// clearing the bits for fast enable and buffering from other register
+		gpt4_ptr->TIMx_CCMR2 |=   (0x08 << 0);					/// setting the buffering
+	}
+}
+

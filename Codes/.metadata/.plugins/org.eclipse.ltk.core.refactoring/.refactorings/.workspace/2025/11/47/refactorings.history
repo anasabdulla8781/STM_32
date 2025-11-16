@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;10_2LED_with_differant_delays&apos;" deleteContents="false" description="Delete resource &apos;10_2LED_with_differant_delays&apos;" element1="/10_2LED_with_differant_delays" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1763273761232"/>
+</session>

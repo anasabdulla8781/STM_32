@@ -9,7 +9,7 @@
 
 
 
-void led_init(uint8_t pin , uint8_t mode)
+void pin_init(uint8_t pin , uint8_t mode)
 {
 	switch(mode)
 	{
@@ -29,7 +29,7 @@ void led_init(uint8_t pin , uint8_t mode)
 }
 
 
-void led_operations (uint8_t pin , uint8_t state)
+void pin_operation (uint8_t pin , uint8_t state)
 {
 	if(state == TOGGLE)
 	{
@@ -37,11 +37,28 @@ void led_operations (uint8_t pin , uint8_t state)
 	}
 	else if (state == ON)
 	{
-		gpiod_ptr->ODR |= (1<<pin);				/// Turn on the LED
+		gpiod_ptr->ODR |= (1<<pin);					/// Turn on the LED
 	}
 	else
 	{
 		gpiod_ptr->ODR &= ~(1<<pin);				/// Turn off the LED
 	}
+}
+
+void set_alternate_function_portD(uint8_t pin, uint8_t device)
+{
+    switch(device)
+    {
+    case TIMER4:   // TIM4 is mapped to PD12–PD15 (AF2)
+        if(pin > 7 && pin <= 15)
+        {
+            gpiod_ptr->AFRH &= ~(0x0F << ((pin - 8) * 4));   // Clear AF bits
+            gpiod_ptr->AFRH |=  (0x02 << ((pin - 8) * 4));   // AF2 = TIM4
+        }
+        break;
+
+    default:
+        break;
+    }
 }
 

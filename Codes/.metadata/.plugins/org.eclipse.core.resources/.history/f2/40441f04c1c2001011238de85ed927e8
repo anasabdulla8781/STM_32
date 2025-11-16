@@ -1,0 +1,16 @@
+/*
+ * APP_feature.c
+ *
+ *  Created on: Nov 16, 2025
+ *      Author: ANAS
+ */
+
+
+#include <APP_feature.h>
+#include <service.h>
+
+
+void fade_led_program (void)
+{
+	gpt4_ptr
+}
