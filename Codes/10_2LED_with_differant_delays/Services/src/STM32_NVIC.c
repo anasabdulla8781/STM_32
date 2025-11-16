@@ -35,7 +35,7 @@ void TIM2_IRQHandler(void)
 	if (gpt2_ptr->TIMx_SR & 1U) 			/// Last bit in the SR is 1 indicating there is an interrupt happened
 	{
 		gpt2_ptr->TIMx_SR &= ~(1U << 0);
-		led_operations(GREEN_LED_PIN, TOGGLE);
+		pin_operation(GREEN_LED_PIN, TOGGLE);
 
 		four_s_delay++;
 		eight_s_delay++;
@@ -43,19 +43,19 @@ void TIM2_IRQHandler(void)
 
 		if(four_s_delay == 4)
 		{
-			led_operations(BLUE_LED_PIN, TOGGLE);
+			pin_operation(BLUE_LED_PIN, TOGGLE);
 			four_s_delay = 0 ;
 		}
 
 		if(eight_s_delay == 8)
 		{
-			led_operations(RED_LED_PIN, TOGGLE);
+			pin_operation(RED_LED_PIN, TOGGLE);
 			eight_s_delay = 0 ;
 		}
 
 		if(twelve_s_delay == 12)
 		{
-			led_operations(ORANGE_LED_PIN, TOGGLE);
+			pin_operation(ORANGE_LED_PIN, TOGGLE);
 			twelve_s_delay = 0 ;
 		}
 	}

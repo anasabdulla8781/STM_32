@@ -64,14 +64,18 @@ typedef struct
 #define OFF		0
 #define TOGGLE	2
 
+/// Pin modes
 #define PIN_OUTPUT 	1
 #define PIN_INPUT	2
 #define PIN_ALTERNATE_FUNCTION	3
 
+/// devices connected for the alternate functions
+#define TIMER4	1
 
 /// FUNCTION DEFINITIONS
-extern void led_init(uint8_t pin,uint8_t mode);
-extern void led_operations(uint8_t pin , uint8_t state);
+extern void pin_init(uint8_t pin,uint8_t mode);
+extern void pin_operation(uint8_t pin , uint8_t state);
+extern void set_alternate_function_portD(uint8_t pin, uint8_t device);
 
 
 #endif /* INC_STM32_GPIO_H_ */

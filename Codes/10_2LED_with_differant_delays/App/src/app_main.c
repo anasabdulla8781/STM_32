@@ -36,10 +36,10 @@ void service_init()
 
 void app_init()
 {
-	led_init(GREEN_LED_PIN,PIN_OUTPUT);
-	led_init(BLUE_LED_PIN,PIN_OUTPUT);
-	led_init(RED_LED_PIN,PIN_OUTPUT);
-	led_init(ORANGE_LED_PIN,PIN_OUTPUT);
+	pin_init(GREEN_LED_PIN,PIN_OUTPUT);
+	pin_init(BLUE_LED_PIN,PIN_OUTPUT);
+	pin_init(RED_LED_PIN,PIN_OUTPUT);
+	pin_init(ORANGE_LED_PIN,PIN_OUTPUT);
 }
 
 int main(void)

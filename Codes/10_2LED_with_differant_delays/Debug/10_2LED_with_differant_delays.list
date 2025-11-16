@@ -29,25 +29,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  00001534  2**0
                   CONTENTS, READONLY
- 13 .debug_info   00000a58  00000000  00000000  00001564  2**0
+ 13 .debug_info   00000a87  00000000  00000000  00001564  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00000404  00000000  00000000  00001fbc  2**0
+ 14 .debug_abbrev 00000406  00000000  00000000  00001feb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 000000f0  00000000  00000000  000023c0  2**3
+ 15 .debug_aranges 000000f8  00000000  00000000  000023f8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 00000097  00000000  00000000  000024b0  2**0
+ 16 .debug_rnglists 0000009d  00000000  00000000  000024f0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  000013e4  00000000  00000000  00002547  2**0
+ 17 .debug_macro  000013f0  00000000  00000000  0000258d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   000018e0  00000000  00000000  0000392b  2**0
+ 18 .debug_line   0000192d  00000000  00000000  0000397d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000045b8  00000000  00000000  0000520b  2**0
+ 19 .debug_str    000045e4  00000000  00000000  000052aa  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  000097c3  2**0
+ 20 .comment      00000043  00000000  00000000  0000988e  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  000001cc  00000000  00000000  00009808  2**2
+ 21 .debug_frame  000001f4  00000000  00000000  000098d4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 00000076  00000000  00000000  000099d4  2**0
+ 22 .debug_line_str 00000076  00000000  00000000  00009ac8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -106,22 +106,22 @@ void app_init()
 {
  80001de:	b580      	push	{r7, lr}
  80001e0:	af00      	add	r7, sp, #0
-	led_init(GREEN_LED_PIN,PIN_OUTPUT);
+	pin_init(GREEN_LED_PIN,PIN_OUTPUT);
  80001e2:	2101      	movs	r1, #1
  80001e4:	200c      	movs	r0, #12
- 80001e6:	f000 f81d 	bl	8000224 <led_init>
-	led_init(BLUE_LED_PIN,PIN_OUTPUT);
+ 80001e6:	f000 f81d 	bl	8000224 <pin_init>
+	pin_init(BLUE_LED_PIN,PIN_OUTPUT);
  80001ea:	2101      	movs	r1, #1
  80001ec:	200f      	movs	r0, #15
- 80001ee:	f000 f819 	bl	8000224 <led_init>
-	led_init(RED_LED_PIN,PIN_OUTPUT);
+ 80001ee:	f000 f819 	bl	8000224 <pin_init>
+	pin_init(RED_LED_PIN,PIN_OUTPUT);
  80001f2:	2101      	movs	r1, #1
  80001f4:	200e      	movs	r0, #14
- 80001f6:	f000 f815 	bl	8000224 <led_init>
-	led_init(ORANGE_LED_PIN,PIN_OUTPUT);
+ 80001f6:	f000 f815 	bl	8000224 <pin_init>
+	pin_init(ORANGE_LED_PIN,PIN_OUTPUT);
  80001fa:	2101      	movs	r1, #1
  80001fc:	200d      	movs	r0, #13
- 80001fe:	f000 f811 	bl	8000224 <led_init>
+ 80001fe:	f000 f811 	bl	8000224 <pin_init>
 }
  8000202:	bf00      	nop
  8000204:	bd80      	pop	{r7, pc}
@@ -147,12 +147,12 @@ int main(void)
  8000220:	e7fd      	b.n	800021e <main+0x18>
 	...
 
-08000224 <led_init>:
+08000224 <pin_init>:
 #include <STM32_GPIO.h>
 
 
 
-void led_init(uint8_t pin , uint8_t mode)
+void pin_init(uint8_t pin , uint8_t mode)
 {
  8000224:	b480      	push	{r7}
  8000226:	b083      	sub	sp, #12
@@ -165,22 +165,22 @@ void led_init(uint8_t pin , uint8_t mode)
 	switch(mode)
  8000234:	79bb      	ldrb	r3, [r7, #6]
  8000236:	2b03      	cmp	r3, #3
- 8000238:	d01e      	beq.n	8000278 <led_init+0x54>
+ 8000238:	d01e      	beq.n	8000278 <pin_init+0x54>
  800023a:	2b03      	cmp	r3, #3
- 800023c:	dc1e      	bgt.n	800027c <led_init+0x58>
+ 800023c:	dc1e      	bgt.n	800027c <pin_init+0x58>
  800023e:	2b01      	cmp	r3, #1
- 8000240:	d002      	beq.n	8000248 <led_init+0x24>
+ 8000240:	d002      	beq.n	8000248 <pin_init+0x24>
  8000242:	2b02      	cmp	r3, #2
- 8000244:	d01c      	beq.n	8000280 <led_init+0x5c>
+ 8000244:	d01c      	beq.n	8000280 <pin_init+0x5c>
 			break;
 		case PIN_ALTERNATE_FUNCTION:
 			break;
 
 		default:
 			break;
- 8000246:	e019      	b.n	800027c <led_init+0x58>
+ 8000246:	e019      	b.n	800027c <pin_init+0x58>
 			gpiod_ptr->MODER &= ~(0X03<<(pin*2));		/// clearing the mode bits for the LED
- 8000248:	4b11      	ldr	r3, [pc, #68]	@ (8000290 <led_init+0x6c>)
+ 8000248:	4b11      	ldr	r3, [pc, #68]	@ (8000290 <pin_init+0x6c>)
  800024a:	681b      	ldr	r3, [r3, #0]
  800024c:	79fa      	ldrb	r2, [r7, #7]
  800024e:	0052      	lsls	r2, r2, #1
@@ -188,28 +188,28 @@ void led_init(uint8_t pin , uint8_t mode)
  8000252:	fa01 f202 	lsl.w	r2, r1, r2
  8000256:	43d2      	mvns	r2, r2
  8000258:	4611      	mov	r1, r2
- 800025a:	4a0d      	ldr	r2, [pc, #52]	@ (8000290 <led_init+0x6c>)
+ 800025a:	4a0d      	ldr	r2, [pc, #52]	@ (8000290 <pin_init+0x6c>)
  800025c:	400b      	ands	r3, r1
  800025e:	6013      	str	r3, [r2, #0]
 			gpiod_ptr->MODER |= (0x01 << (pin*2));		/// setting the mode bits as output for the LED
- 8000260:	4b0b      	ldr	r3, [pc, #44]	@ (8000290 <led_init+0x6c>)
+ 8000260:	4b0b      	ldr	r3, [pc, #44]	@ (8000290 <pin_init+0x6c>)
  8000262:	681b      	ldr	r3, [r3, #0]
  8000264:	79fa      	ldrb	r2, [r7, #7]
  8000266:	0052      	lsls	r2, r2, #1
  8000268:	2101      	movs	r1, #1
  800026a:	fa01 f202 	lsl.w	r2, r1, r2
  800026e:	4611      	mov	r1, r2
- 8000270:	4a07      	ldr	r2, [pc, #28]	@ (8000290 <led_init+0x6c>)
+ 8000270:	4a07      	ldr	r2, [pc, #28]	@ (8000290 <pin_init+0x6c>)
  8000272:	430b      	orrs	r3, r1
  8000274:	6013      	str	r3, [r2, #0]
 			break;
- 8000276:	e004      	b.n	8000282 <led_init+0x5e>
+ 8000276:	e004      	b.n	8000282 <pin_init+0x5e>
 			break;
  8000278:	bf00      	nop
- 800027a:	e002      	b.n	8000282 <led_init+0x5e>
+ 800027a:	e002      	b.n	8000282 <pin_init+0x5e>
 			break;
  800027c:	bf00      	nop
- 800027e:	e000      	b.n	8000282 <led_init+0x5e>
+ 800027e:	e000      	b.n	8000282 <pin_init+0x5e>
 			break;
  8000280:	bf00      	nop
 	}
@@ -223,10 +223,10 @@ void led_init(uint8_t pin , uint8_t mode)
  800028e:	bf00      	nop
  8000290:	40020c00 	.word	0x40020c00
 
-08000294 <led_operations>:
+08000294 <pin_operation>:
 
 
-void led_operations (uint8_t pin , uint8_t state)
+void pin_operation (uint8_t pin , uint8_t state)
 {
  8000294:	b480      	push	{r7}
  8000296:	b083      	sub	sp, #12
@@ -239,16 +239,16 @@ void led_operations (uint8_t pin , uint8_t state)
 	if(state == TOGGLE)
  80002a4:	79bb      	ldrb	r3, [r7, #6]
  80002a6:	2b02      	cmp	r3, #2
- 80002a8:	d10a      	bne.n	80002c0 <led_operations+0x2c>
+ 80002a8:	d10a      	bne.n	80002c0 <pin_operation+0x2c>
 	{
 		gpiod_ptr->ODR ^= (1<<pin);					/// toggling the LED
- 80002aa:	4b15      	ldr	r3, [pc, #84]	@ (8000300 <led_operations+0x6c>)
+ 80002aa:	4b15      	ldr	r3, [pc, #84]	@ (8000300 <pin_operation+0x6c>)
  80002ac:	695b      	ldr	r3, [r3, #20]
  80002ae:	79fa      	ldrb	r2, [r7, #7]
  80002b0:	2101      	movs	r1, #1
  80002b2:	fa01 f202 	lsl.w	r2, r1, r2
  80002b6:	4611      	mov	r1, r2
- 80002b8:	4a11      	ldr	r2, [pc, #68]	@ (8000300 <led_operations+0x6c>)
+ 80002b8:	4a11      	ldr	r2, [pc, #68]	@ (8000300 <pin_operation+0x6c>)
  80002ba:	404b      	eors	r3, r1
  80002bc:	6153      	str	r3, [r2, #20]
 	}
@@ -257,32 +257,32 @@ void led_operations (uint8_t pin , uint8_t state)
 		gpiod_ptr->ODR &= ~(1<<pin);				/// Turn off the LED
 	}
 }
- 80002be:	e018      	b.n	80002f2 <led_operations+0x5e>
+ 80002be:	e018      	b.n	80002f2 <pin_operation+0x5e>
 	else if (state == ON)
  80002c0:	79bb      	ldrb	r3, [r7, #6]
  80002c2:	2b01      	cmp	r3, #1
- 80002c4:	d10a      	bne.n	80002dc <led_operations+0x48>
-		gpiod_ptr->ODR |= (1<<pin);				/// Turn on the LED
- 80002c6:	4b0e      	ldr	r3, [pc, #56]	@ (8000300 <led_operations+0x6c>)
+ 80002c4:	d10a      	bne.n	80002dc <pin_operation+0x48>
+		gpiod_ptr->ODR |= (1<<pin);					/// Turn on the LED
+ 80002c6:	4b0e      	ldr	r3, [pc, #56]	@ (8000300 <pin_operation+0x6c>)
  80002c8:	695b      	ldr	r3, [r3, #20]
  80002ca:	79fa      	ldrb	r2, [r7, #7]
  80002cc:	2101      	movs	r1, #1
  80002ce:	fa01 f202 	lsl.w	r2, r1, r2
  80002d2:	4611      	mov	r1, r2
- 80002d4:	4a0a      	ldr	r2, [pc, #40]	@ (8000300 <led_operations+0x6c>)
+ 80002d4:	4a0a      	ldr	r2, [pc, #40]	@ (8000300 <pin_operation+0x6c>)
  80002d6:	430b      	orrs	r3, r1
  80002d8:	6153      	str	r3, [r2, #20]
 }
- 80002da:	e00a      	b.n	80002f2 <led_operations+0x5e>
+ 80002da:	e00a      	b.n	80002f2 <pin_operation+0x5e>
 		gpiod_ptr->ODR &= ~(1<<pin);				/// Turn off the LED
- 80002dc:	4b08      	ldr	r3, [pc, #32]	@ (8000300 <led_operations+0x6c>)
+ 80002dc:	4b08      	ldr	r3, [pc, #32]	@ (8000300 <pin_operation+0x6c>)
  80002de:	695b      	ldr	r3, [r3, #20]
  80002e0:	79fa      	ldrb	r2, [r7, #7]
  80002e2:	2101      	movs	r1, #1
  80002e4:	fa01 f202 	lsl.w	r2, r1, r2
  80002e8:	43d2      	mvns	r2, r2
  80002ea:	4611      	mov	r1, r2
- 80002ec:	4a04      	ldr	r2, [pc, #16]	@ (8000300 <led_operations+0x6c>)
+ 80002ec:	4a04      	ldr	r2, [pc, #16]	@ (8000300 <pin_operation+0x6c>)
  80002ee:	400b      	ands	r3, r1
  80002f0:	6153      	str	r3, [r2, #20]
 }
@@ -416,10 +416,10 @@ void TIM2_IRQHandler(void)
  80003c0:	f04f 4280 	mov.w	r2, #1073741824	@ 0x40000000
  80003c4:	f023 0301 	bic.w	r3, r3, #1
  80003c8:	6113      	str	r3, [r2, #16]
-		led_operations(GREEN_LED_PIN, TOGGLE);
+		pin_operation(GREEN_LED_PIN, TOGGLE);
  80003ca:	2102      	movs	r1, #2
  80003cc:	200c      	movs	r0, #12
- 80003ce:	f7ff ff61 	bl	8000294 <led_operations>
+ 80003ce:	f7ff ff61 	bl	8000294 <pin_operation>
 
 		four_s_delay++;
  80003d2:	4b1a      	ldr	r3, [pc, #104]	@ (800043c <TIM2_IRQHandler+0x94>)
@@ -449,10 +449,10 @@ void TIM2_IRQHandler(void)
  80003fa:	2b04      	cmp	r3, #4
  80003fc:	d106      	bne.n	800040c <TIM2_IRQHandler+0x64>
 		{
-			led_operations(BLUE_LED_PIN, TOGGLE);
+			pin_operation(BLUE_LED_PIN, TOGGLE);
  80003fe:	2102      	movs	r1, #2
  8000400:	200f      	movs	r0, #15
- 8000402:	f7ff ff47 	bl	8000294 <led_operations>
+ 8000402:	f7ff ff47 	bl	8000294 <pin_operation>
 			four_s_delay = 0 ;
  8000406:	4b0d      	ldr	r3, [pc, #52]	@ (800043c <TIM2_IRQHandler+0x94>)
  8000408:	2200      	movs	r2, #0
@@ -465,10 +465,10 @@ void TIM2_IRQHandler(void)
  8000410:	2b08      	cmp	r3, #8
  8000412:	d106      	bne.n	8000422 <TIM2_IRQHandler+0x7a>
 		{
-			led_operations(RED_LED_PIN, TOGGLE);
+			pin_operation(RED_LED_PIN, TOGGLE);
  8000414:	2102      	movs	r1, #2
  8000416:	200e      	movs	r0, #14
- 8000418:	f7ff ff3c 	bl	8000294 <led_operations>
+ 8000418:	f7ff ff3c 	bl	8000294 <pin_operation>
 			eight_s_delay = 0 ;
  800041c:	4b08      	ldr	r3, [pc, #32]	@ (8000440 <TIM2_IRQHandler+0x98>)
  800041e:	2200      	movs	r2, #0
@@ -481,10 +481,10 @@ void TIM2_IRQHandler(void)
  8000426:	2b0c      	cmp	r3, #12
  8000428:	d106      	bne.n	8000438 <TIM2_IRQHandler+0x90>
 		{
-			led_operations(ORANGE_LED_PIN, TOGGLE);
+			pin_operation(ORANGE_LED_PIN, TOGGLE);
  800042a:	2102      	movs	r1, #2
  800042c:	200d      	movs	r0, #13
- 800042e:	f7ff ff31 	bl	8000294 <led_operations>
+ 800042e:	f7ff ff31 	bl	8000294 <pin_operation>
 			twelve_s_delay = 0 ;
  8000432:	4b04      	ldr	r3, [pc, #16]	@ (8000444 <TIM2_IRQHandler+0x9c>)
  8000434:	2200      	movs	r2, #0
