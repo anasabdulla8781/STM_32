@@ -1,0 +1,3 @@
+../Services/src/STM32_ADC.c:12:6:adc_init_common	2
+../Services/src/STM32_ADC.c:24:6:adc1_init	1
+../Services/src/STM32_ADC.c:39:6:fill_adc_value	2
