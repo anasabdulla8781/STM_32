@@ -26,6 +26,7 @@
 #endif
 
 volatile uint16_t adc_value = 0;
+float converted_value = 0.0;
 
 void service_init()
 {
@@ -47,6 +48,7 @@ int main(void)
 
 	while (1)
 	{
-		fill_adc_value(&adc_value);
+		get_adc_value(&adc_value);
+		adc_convert_value(adc_value,&converted_value,TEMPERATURE_DETECTION_MODE);
 	}
 }

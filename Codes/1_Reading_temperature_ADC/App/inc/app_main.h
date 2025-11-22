@@ -14,5 +14,6 @@ extern void service_init(void);
 extern void app_init(void);
 
 extern volatile uint16_t adc_value;
+extern float converted_value;
 
 #endif /* INC_APP_MAIN_H_ */

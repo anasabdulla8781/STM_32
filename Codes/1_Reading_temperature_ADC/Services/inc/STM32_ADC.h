@@ -67,12 +67,21 @@ typedef struct
 
 /// Macros
 #define ADC_INDEPENDENT_MODE	0
+#define ADC_MAX_VALUE	4095.00
+#define MAX_VOLTAGE		3.3
+
+/// TEmperature sensor specific macros
+#define ADC_VOLTAGE_AT_25_DEGREE	0.760
+#define TEMPERATURE_SENSOR_SLOPE	0.0025
+#define TEMPERATURE_DETECTION_MODE	1
+#define REFERANCE_TEMPERATURE	25.00
 
 
 /// Function declarations
 extern void adc_init_common(uint8_t mode);
 void adc1_init(void);
-extern void fill_adc_value(volatile uint16_t* adc_measured_value);
+extern void get_adc_value(volatile uint16_t* adc_measured_value);
+extern void adc_convert_value(volatile uint16_t adc_measured_value, float* converted_value ,uint8_t mode);
 
 
 /// Global variable declarions

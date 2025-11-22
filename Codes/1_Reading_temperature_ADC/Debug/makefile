@@ -61,8 +61,8 @@ all: main-build
 main-build: 1_Reading_temperature_ADC.elf secondary-outputs
 
 # Tool invocations
-1_Reading_temperature_ADC.elf 1_Reading_temperature_ADC.map: $(OBJS) $(USER_OBJS) D:\Embedded\ systems\STM32_Activities\Codes\1_Reading_temperature_ADC\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "1_Reading_temperature_ADC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Embedded systems\STM32_Activities\Codes\1_Reading_temperature_ADC\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Reading_temperature_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+1_Reading_temperature_ADC.elf 1_Reading_temperature_ADC.map: $(OBJS) $(USER_OBJS) D:\Anas_Embedded\ system\STM32_Activities\Codes\1_Reading_temperature_ADC\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "1_Reading_temperature_ADC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Anas_Embedded system\STM32_Activities\Codes\1_Reading_temperature_ADC\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="1_Reading_temperature_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
